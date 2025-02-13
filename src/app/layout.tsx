@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="icon" href="/small-logo.png" type="image/png"/>
+        <link rel="icon" href="/bba.png" type="image/png"/>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
       <body

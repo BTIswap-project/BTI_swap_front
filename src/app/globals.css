@@ -18,3 +18,18 @@ body {
   background: var(--background);
   font-family: 'Roboto', sans-serif;
 }
+
+.slippage {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 10px;
+  text-align: center;
+  color: #989898;
+  background-color: black;
+}
+.slippage.active {
+  border: 1px solid #1CF800;
+  color: white;
+}
