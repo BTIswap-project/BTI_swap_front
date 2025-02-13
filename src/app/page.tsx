@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="container mx-auto flex flex-col">
-      <div className="h-[117px] w-full px-[27px] py-[26px] rounded-[30px] flex flex-col justify-center mt-12"  style={{
+    <div className="container mx-auto flex flex-col h-full py-[160px]">
+      <div className="h-[117px] w-full px-[27px] py-[26px] rounded-[30px] flex flex-col justify-center"  style={{
           backgroundImage: `url('./assets/image/sub-new.png')`, 
           backgroundSize: 'cover',
         }}>
@@ -23,10 +23,10 @@ export default function Home() {
             Your Gateway to Decentralized Trading
           </p>
           <div className="flex space-x-5">
-            <button className="bg-green-default text-white font-[500] text-[18px] leading-[24px] py-[5px] px-[10px] rounded-[10px] w-[158px] hover:bg-green-600 transition duration-200">
+            <button className="border border-green-default bg-green-default text-white font-[500] text-[18px] leading-[24px] py-[5px] px-[10px] rounded-[10px] w-[158px] hover:bg-opacity-0 transition duration-200">
               Trade Now
             </button>
-            <button className="border border-green-default text-white font-[500] text-[18px] leading-[24px] py-[5px] px-[10px] rounded-[10px] w-[158px] hover:bg-green-600 transition duration-200">
+            <button className="border border-green-default text-white font-[500] text-[18px] leading-[24px] py-[5px] px-[10px] rounded-[10px] w-[158px] hover:bg-green-default transition duration-200">
               Connect
             </button>
           </div>

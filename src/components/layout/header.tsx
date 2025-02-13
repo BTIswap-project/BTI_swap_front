@@ -1,7 +1,7 @@
 "use client"; // Add this line
-import React, { useState , useEffect} from 'react';
+import React from 'react';
 import Image from "next/image";
-import { useRouter, usePathname  } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
         router.push("/");
     }
     return (
-        <div className='container mx-auto  flex justify-between items-center py-3 pt-[75px]'>
+        <div className='container mx-auto  flex justify-between items-center py-3 absolute top-12 left-1/2 transform -translate-x-1/2'>
             <div className='flex space-x-6'>
                 <button onClick={handleHome}>
                     <Image 
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
                         className="text-[12px] font-bold  text-white " 
                     />
                 </div>
-                <button className="bg-green-default text-white font-normal text-[14px] leading-[24px] py-[5px] px-[10px] rounded-[10px] w-[124px] hover:bg-green-600 transition duration-200">
+                <button className="border border-green-default bg-green-default text-white font-normal text-[14px] leading-[24px] py-[5px] px-[10px] rounded-[10px] w-[124px] hover:bg-opacity-0 transition duration-200">
                     Connect
                 </button>
                 <Image 

@@ -11,7 +11,7 @@ export default function DefaultLayout({
   }) {
 
   return (
-    <div className='pb-12'>
+    <div className='h-fit relative'>
        <Header />
        {children}
        <Footer />
