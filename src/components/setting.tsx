@@ -26,12 +26,13 @@ const Setting: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
         }
     }, [isChecked]);
     const connectRef = useRef<HTMLDivElement | null>(null);
-    const handleClickOutside = (event: MouseEvent) => {
-        if (connectRef.current && !connectRef.current.contains(event.target as Node)) {
-            onClose();
-        }
-    };
+    
     useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (connectRef.current && !connectRef.current.contains(event.target as Node)) {
+                onClose();
+            }
+        };
         if(!isWarningOpen)
         {
             document.addEventListener('mousedown', handleClickOutside);
@@ -40,21 +41,21 @@ const Setting: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
             };
         }
         
-    }, [isWarningOpen, handleClickOutside]);
+    }, [isWarningOpen, onClose]);
     return (<>
     {isOpen &&
-    (<div className={`absolute w-full h-full inset-0 bg-black bg-opacity-50 z-50`}>
-      <div ref={connectRef} className={`absolute flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
-        <div className="flex rounded-[15px] w-[531px] h-[316px] bg-gray-dark p-[25px] shadow-custom ">
+    (<div className={`absolute w-full h-[100vh] inset-0 bg-black bg-opacity-50 z-50`}>
+      <div ref={connectRef} className={`absolute flex  flex-wrap w-full justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-[25px]`}>
+        <div className="flex rounded-[15px]  flex-wrap max-w-[531px] w-full h-hit bg-white dark:bg-gray-dark p-[25px] shadow-custom ">
           <div className="flex flex-col space-y-6 py-3 w-full">
             <div className="flex justify-between">
-                <p className="text-[18px] font-normal leading-[21.41px] text-white">
+                <p className="text-[18px] font-normal leading-[21.41px] text-black dark:text-white">
                     Settings
                 </p>
                 <button onClick={onClose}>
                     <FontAwesomeIcon 
                         icon={faClose} 
-                        className="text-[18px] font-bold text-white" 
+                        className="text-[18px] font-bold text-black dark:text-white" 
                     />
                 </button>
             </div>
@@ -71,11 +72,11 @@ const Setting: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                         />
                     </div>
                 </div>    
-                <div className="grid grid-cols-4 gap-4 py-[10px]">
-                    <button className="slippage active">0.05%</button>
-                    <button className="slippage">0.1%</button>
-                    <button className="slippage">0.5%</button>
-                    <button className="slippage">Custom%</button>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-[10px]">
+                    <button className="slippage bg-light-light dark:bg-black text-black dark:text-white border border-green-default">0.05%</button>
+                    <button className="slippage bg-light-light dark:bg-black text-gray-light dark:text-white">0.1%</button>
+                    <button className="slippage bg-light-light dark:bg-black text-gray-light dark:text-white">0.5%</button>
+                    <button className="slippage bg-light-light dark:bg-black text-gray-light dark:text-white">Custom%</button>
                 </div>              
             </div>  
             <div className="flex justify-between">
@@ -91,7 +92,7 @@ const Setting: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                     </div>
                 </div> 
                 <div className="flex justify-end items-center space-x-3">
-                    <input className="slippage text-white w-[60px]" value={20} readOnly/>
+                    <input className="slippage bg-light-light dark:bg-black text-black dark:text-white w-[60px]" value={20} readOnly/>
                     <p className="text-[14px] font-normal leading-[16.41px] text-gray-light">
                         Minutes
                     </p>
@@ -118,8 +119,8 @@ const Setting: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                                 checked={isChecked} 
                                 onChange={handleToggle} 
                             />
-                            <div className={`w-[65px] h-[31px] ${isChecked ? 'bg-green-default' : 'bg-black'} rounded-full transition duration-200 ease-in-out`}>
-                                <div className={`absolute top-[2px] transition-transform duration-200 ease-in-out ${isChecked ? 'translate-x-[34px] bg-white' : 'translate-x-0 bg-gray-light'} w-[27px] h-[27px] rounded-full shadow`}></div>
+                            <div className={`w-[65px] h-[31px] ${isChecked ? 'bg-green-default' : 'bg-light-light dark:bg-black'} rounded-full transition duration-200 ease-in-out`}>
+                                <div className={`absolute top-[2px] transition-transform duration-200 ease-in-out ${isChecked ? 'translate-x-[34px] bg-white' : 'translate-x-0 bg-white dark:bg-gray-light'} w-[27px] h-[27px] rounded-full shadow`}></div>
                             </div>
                         </label>
                     </div>

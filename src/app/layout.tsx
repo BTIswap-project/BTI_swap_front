@@ -32,11 +32,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{
-          backgroundImage: `url('./assets/image/background.png')`, // Light mode background
-          backgroundSize: 'cover',
-        }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  `}
       >
         <DefaultLayout>{children}</DefaultLayout>
       </body>
