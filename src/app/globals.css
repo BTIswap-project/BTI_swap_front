@@ -1,24 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-color: white; /* Light mode background */
+  --text-color: black; /* Light mode text color */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-color: white; /* Light mode background */
+    --text-color: black; /* Light mode text color */
   }
+}
+.dark {
+  --background-color: #1a1a1a; /* Dark mode background */
+  --text-color: white; /* Dark mode text color */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
-
 .slippage {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -26,10 +31,11 @@ body {
   font-weight: 400;
   border-radius: 10px;
   text-align: center;
-  color: #989898;
-  background-color: black;
 }
 .slippage.active {
   border: 1px solid #1CF800;
-  color: white;
+}
+
+.main-container{
+  min-height: calc(100vh - 240px);
 }

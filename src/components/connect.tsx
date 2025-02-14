@@ -1,7 +1,8 @@
 
 import React, { useEffect, useRef }  from "react";
 import Image from "next/image";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose} from '@fortawesome/free-solid-svg-icons';
 interface ConnectProps {
     isOpen: boolean;
     onClose: () => void;
@@ -9,51 +10,65 @@ interface ConnectProps {
 
 const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
   const connectRef = useRef<HTMLDivElement | null>(null);
-  const handleClickOutside = (event: MouseEvent) => {
-      if (connectRef.current && !connectRef.current.contains(event.target as Node)) {
-        onClose();
-      }
-  };
+  
   useEffect(() => {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
-      };
-  }, []);
+    const handleClickOutside = (event: MouseEvent) => {
+        if (connectRef.current && !connectRef.current.contains(event.target as Node)) {
+          onClose();
+        }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
   return (
     (isOpen &&
-    <div className={`absolute w-full h-full inset-0 bg-black bg-opacity-50 z-50`}>
-      <div ref={connectRef} className={`absolute flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}>
-        <div className="flex flex-col rounded-[15px] w-[505px] h-[490px] bg-gray-dark p-[35px] shadow-custom ">
+    <div className={`absolute w-full h-[100vh] inset-0 bg-black bg-opacity-50 z-50`}>
+      <div ref={connectRef} className={`absolute flex w-full justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-[25px]`}>
+        <div className="flex flex-col rounded-[15px] flex-wrap max-w-[505px] w-full  h-hit bg-white dark:bg-gray-dark p-[35px] shadow-custom ">
           <div className="flex flex-col space-y-5 border-b-2 border-gray-light py-3">
-            <p className="text-[20px] font-bold leading-[23.41px] text-white text-center">
-              Select your Wallet
-            </p>
+            <div className="flex w-full relative">
+                <p className="text-[20px] font-bold leading-[23.41px] text-white text-center">
+                Select your Wallet
+                </p>
+                <button onClick={onClose}>
+                    <FontAwesomeIcon 
+                        icon={faClose} 
+                        className="text-[18px] font-bold text-black dark:text-white absolute top-0 right-0" 
+                    />
+                </button>
+            </div>
+            
             <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
               Start by connecting with one of the wallets below. Be sure to store your private keys or seed phrase securely. 
             </p>
             <div className="grid grid-cols-3 gap-5 gap-y-10">
-              <button className="flex flex-col items-center space-y-2 transition-transform duration-200 transform hover:scale-105">
-                  <Image 
-                      src="/assets/image/bti-wallet.png" 
-                      alt="Logo Icon" 
-                      width={57} 
-                      height={57} 
-                  />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
-                      BTI Wallet
-                  </p>
+              <button className="flex flex-col items-center  space-y-2 transition-transform duration-200 transform hover:scale-105">
+                    <div className="flex w-[57px] h-[57px] items-center justify-center bg-black dark:bg-white">
+                        <Image 
+                            src="/assets/image/bti-icon.png" 
+                            alt="Logo Icon" 
+                            width={50} 
+                            height={50} 
+                        />
+                    </div>
+                    <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
+                        BTI Wallet
+                    </p>
               </button>
               <button className="flex flex-col items-center space-y-2 transition-transform duration-200 transform hover:scale-105">
-                  <Image 
-                      src="/assets/image/metamask.png" 
-                      alt="Logo Icon" 
-                      width={57} 
-                      height={57} 
-                  />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
-                      Metamask
-                  </p>
+                    <div className="flex w-[57px] h-[57px] items-center justify-center bg-black dark:bg-white">
+                        <Image 
+                            src="/assets/image/meta-icon.png" 
+                            alt="Logo Icon" 
+                            width={39} 
+                            height={39} 
+                        />
+                    </div>       
+                    <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
+                        Metamask
+                    </p>
               </button>
               <button className="flex flex-col items-center space-y-2 transition-transform duration-200 transform hover:scale-105">
                   <Image 
@@ -62,7 +77,7 @@ const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                       width={57} 
                       height={57} 
                   />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                       Biance
                   </p>
               </button>
@@ -73,7 +88,7 @@ const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                       width={57} 
                       height={57} 
                   />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                       CoinBase
                   </p>
               </button>
@@ -84,7 +99,7 @@ const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                       width={57} 
                       height={57} 
                   />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                     Wallet Connect
                   </p>
               </button>
@@ -95,7 +110,7 @@ const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                       width={57} 
                       height={57} 
                   />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                       Safepal
                   </p>
               </button>
@@ -106,18 +121,20 @@ const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                       width={57} 
                       height={57} 
                   />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                       Phantom
                   </p>
               </button>
               <button className="flex flex-col items-center space-y-2 transition-transform duration-200 transform hover:scale-105">
-                  <Image 
-                      src="/assets/image/Trust Wallet.png" 
-                      alt="Logo Icon" 
-                      width={57} 
-                      height={57} 
-                  />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                    <div className="flex w-[57px] h-[57px] items-center justify-center bg-black dark:bg-white">
+                        <Image 
+                            src="/assets/image/trust-icon.png" 
+                            alt="Logo Icon" 
+                            width={39} 
+                            height={39} 
+                        />
+                    </div>   
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                     Trust Wallet
                   </p>
               </button>
@@ -128,7 +145,7 @@ const Connect: React.FC<ConnectProps> = ({ isOpen, onClose }) => {
                       width={57} 
                       height={57} 
                   />
-                  <p className="text-[12px] font-normal leading-[14.41px] text-white text-center">
+                  <p className="text-[12px] font-normal leading-[14.41px] text-black dark:text-white text-center">
                     Ledger
                   </p>
               </button>
