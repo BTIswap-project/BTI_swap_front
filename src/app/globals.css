@@ -39,3 +39,13 @@ body {
 .main-container{
   min-height: calc(100vh - 240px);
 }
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tootip-header:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
