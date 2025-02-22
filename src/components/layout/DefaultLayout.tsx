@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from "./header";
 import Footer from "./footer";
-
+import '../../language';
 export default function DefaultLayout({
     children,
   }: {
@@ -36,7 +36,7 @@ export default function DefaultLayout({
       backgroundSize: 'cover',
     }}>
       <Header />
-      {children}
+        {children}
       <Footer />
     </div>
   );
