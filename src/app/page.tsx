@@ -15,8 +15,26 @@ export default function Home() {
   return (
     <div className="container mx-auto flex flex-col main-container py-[20px] md:py-[50px] px-[25px]">
       <DefaultAnimation>
-      <div className="w-full rounded-[10px] md:rounded-[30px] flex flex-col justify-center relative">
-          <div className='absolute top-0 bg-black dark:bg-white bg-opacity-25 dark:bg-opacity-0 w-full h-full  p-3 lg:p-[27px] rounded-[10px] md:rounded-[30px]'>
+      <div className="w-full rounded-[10px] md:rounded-[30px] flex flex-col justify-center relative md:hidden">
+        <div className='absolute top-0 bg-black dark:bg-white bg-opacity-25 dark:bg-opacity-0 w-full h-full  p-3 lg:p-[27px] rounded-[10px] md:rounded-[30px]'>
+          <p className="text-[15px] md:text-[20px] lg:text-[25px] font-[600] text-black ">
+            {t('join')}
+          </p>
+          <p className="text-[8px] md:text-[15px] font-normal leading-[18px] text-gray-default">
+            {t('discord')}
+          </p>
+        </div>
+        <Image 
+          src="/assets/image/sub-new.png" 
+          alt="Gif Icon" 
+          width={415} // Set the desired width
+          height={415} // Set the desired height
+          className='w-full md:w-full min-h-[63px] rounded-[10px] md:rounded-[30px]'
+        />
+      </div>
+      <div className="hidden w-full rounded-[10px] md:rounded-[30px] justify-center relative md:flex">
+        <div className='bg-black dark:bg-white bg-opacity-25 w-full h-full rounded-[10px] md:rounded-[30px] flex justify-between'>
+          <div className='flex flex-col  p-3 lg:p-[27px]'>
             <p className="text-[15px] md:text-[20px] lg:text-[25px] font-[600] text-black ">
               {t('join')}
             </p>
@@ -25,12 +43,13 @@ export default function Home() {
             </p>
           </div>
           <Image 
-            src="/assets/image/sub-new.png" 
+            src="/assets/image/Comp 1.gif" 
             alt="Gif Icon" 
-            width={415} // Set the desired width
-            height={415} // Set the desired height
-            className='w-full md:w-full min-h-[63px] rounded-[10px] md:rounded-[30px]'
+            width={250}
+            height={117} 
+            className='md:w-full max-h-[117px] max-w-[450px] rounded-[10px] md:rounded-[30px]'
           />
+        </div>
       </div>
       <div className="flex flex-col md:flex-row justify-between mt-10 w-full items-center">
         <div className="w-7/12 flex flex-col h-full space-y-3 md:space-y-10 py-5 md:py-10 w-full">
